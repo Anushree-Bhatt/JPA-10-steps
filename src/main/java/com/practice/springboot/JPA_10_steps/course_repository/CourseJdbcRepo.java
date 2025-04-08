@@ -39,6 +39,6 @@ public class CourseJdbcRepo {
     }
 
     public Course findById(Long l) {
-        return jdbcTemplate.queryForObject(select_sql, new BeanPropertyRowMapper<>(Course.class), 1000);
+        return jdbcTemplate.queryForObject(select_sql, new BeanPropertyRowMapper<>(Course.class), l);
     }
 }
