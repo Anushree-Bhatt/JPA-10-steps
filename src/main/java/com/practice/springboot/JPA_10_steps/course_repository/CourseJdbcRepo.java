@@ -17,9 +17,18 @@ public class CourseJdbcRepo {
             values (?, ?, ?);
             """;
 
+    private String delete_sql =
+            """
+            delete from course
+            where id = ?;
+            """;
+
     public void insert(Course course){
         jdbcTemplate.update(insert_sql, course.getId(), course.getName(), course.getAuthor());
     }
 
+    public void deleteById(Long id){
+        jdbcTemplate.update(delete_sql,id);
+    }
 
 }
