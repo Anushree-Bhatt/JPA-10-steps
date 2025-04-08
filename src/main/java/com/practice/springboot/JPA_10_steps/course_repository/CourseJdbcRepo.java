@@ -2,6 +2,7 @@ package com.practice.springboot.JPA_10_steps.course_repository;
 
 import com.practice.springboot.JPA_10_steps.CoursePojo.Course;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +24,12 @@ public class CourseJdbcRepo {
             where id = ?;
             """;
 
+    private String select_sql =
+            """
+            select * from course
+            where id = ?;      
+            """;
+
     public void insert(Course course){
         jdbcTemplate.update(insert_sql, course.getId(), course.getName(), course.getAuthor());
     }
@@ -31,4 +38,7 @@ public class CourseJdbcRepo {
         jdbcTemplate.update(delete_sql,id);
     }
 
+    public Course findById(Long l) {
+        return jdbcTemplate.queryForObject(select_sql, new BeanPropertyRowMapper<>(Course.class), 1000);
+    }
 }
