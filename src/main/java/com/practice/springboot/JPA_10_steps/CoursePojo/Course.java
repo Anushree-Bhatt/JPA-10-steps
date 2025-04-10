@@ -1,6 +1,11 @@
 package com.practice.springboot.JPA_10_steps.CoursePojo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Course {
+    @Id
     private Long id;
     private String name;
     private String author;

@@ -1,4 +1,4 @@
-package com.practice.springboot.JPA_10_steps.course_repository;
+package com.practice.springboot.JPA_10_steps.course_repository.course_jdbc;
 
 import com.practice.springboot.JPA_10_steps.CoursePojo.Course;
 import org.springframework.beans.factory.annotation.Autowired;
